@@ -1,10 +1,17 @@
-// Toggle mobile menu
 function toggleMenu() {
-  document.querySelector('nav').classList.toggle('show');
+  const nav = document.querySelector('nav');
+  nav.classList.toggle('show');
 }
 
-// Animate sections on scroll
 document.addEventListener("DOMContentLoaded", () => {
+  // Close mobile nav on link click
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelector('nav').classList.remove('show');
+    });
+  });
+
+  // Scroll-triggered fade-in animations
   const faders = document.querySelectorAll('.fade-in');
   const appearOptions = {
     threshold: 0.1,
@@ -22,9 +29,4 @@ document.addEventListener("DOMContentLoaded", () => {
   faders.forEach(fader => {
     appearOnScroll.observe(fader);
   });
-
-  // Auto-close mobile menu on link click
-  const navLinks = document.querySelectorAll('.nav-link');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      document.querySelecto
+});
