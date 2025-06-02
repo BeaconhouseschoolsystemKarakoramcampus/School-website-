@@ -1,10 +1,15 @@
+// Toggle mobile menu
 function toggleMenu() {
   document.querySelector('nav').classList.toggle('show');
 }
 
+// Animate sections on scroll
 document.addEventListener("DOMContentLoaded", () => {
   const faders = document.querySelectorAll('.fade-in');
-  const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -100px 0px" };
+  const appearOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -100px 0px"
+  };
 
   const appearOnScroll = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -17,4 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
   faders.forEach(fader => {
     appearOnScroll.observe(fader);
   });
-});
+
+  // Auto-close mobile menu on link click
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelecto
